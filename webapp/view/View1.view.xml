@@ -70,4 +70,5 @@
 			</smartTable:SmartTable>
 		</f:content>
 	</f:DynamicPage>
+	<!-- saket -->
 </mvc:View>
