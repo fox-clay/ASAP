@@ -1,0 +1,73 @@
+<mvc:View controllerName="com.asap.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:layout="sap.ui.layout"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:f="sap.f"
+    xmlns="sap.m">
+
+<!-- <VBox fitContainer="true">
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="LineItemsSet" persistencyKey="SmartFilter_Explored" basicSearchFieldName="Bukrs" enableBasicSearch="true" >
+				<smartFilterBar:controlConfiguration>
+					<smartFilterBar:ControlConfiguration key="Bukrs">
+					<smartFilterBar:defaultFilterValues>
+							<smartFilterBar:SelectOption low="0001">
+							</smartFilterBar:SelectOption>
+						</smartFilterBar:defaultFilterValues>
+					</smartFilterBar:ControlConfiguration>
+					<smartFilterBar:ControlConfiguration key="Gjahr">
+						<smartFilterBar:defaultFilterValues>
+								<smartFilterBar:SelectOption low="2014">
+								</smartFilterBar:SelectOption>
+							</smartFilterBar:defaultFilterValues>
+						</smartFilterBar:ControlConfiguration>
+				</smartFilterBar:controlConfiguration>
+	
+				<smartFilterBar:layoutData>
+					<FlexItemData shrinkFactor="0"/>
+				</smartFilterBar:layoutData>
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable id="LineItemsSmartTable" entitySet="LineItemsSet" smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" app:useSmartToggle="true">
+				<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+			</smartTable:SmartTable>
+		</VBox> -->
+
+		<f:DynamicPage id="dynamicPage" fitContent="true">
+		<f:header>
+			<f:DynamicPageHeader>
+				<sfb:SmartFilterBar
+					id="smartFilterBar"
+					entitySet="MainEntitySet"
+					enableBasicSearch="true"
+					basicSearchFieldName="CompanyCode"
+					persistencyKey="UniqueAndStablePersistencyKey">
+					<sfb:customData>
+						<core:CustomData key="defaultFilterBarExpanded" value='{"CompanyCode": "true"}'/>
+						<core:CustomData key="defaultShowAllFilters" value='{"CompanyCode": "true"}'/>
+					</sfb:customData>     	
+				</sfb:SmartFilterBar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<smartTable:SmartTable
+				id="smartTable"
+				entitySet="MainEntitySet"
+				smartFilterId="smartFilterBar"
+				tableType="Table"
+				enableAutoColumnWidth="true"
+				useTablePersonalisation="true"
+				header="Customer orders"
+				showRowCount="true">
+				<smartTable:layoutData>
+					<m:FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+					<smartTable:customData>
+						<core:CustomData key="defaultShowAllFilters" value='{"CompanyCode": "true"}'/>
+						<core:CustomData key="defaultFilterBarExpanded" value='{"CompanyCode": "true"}'/>
+					</smartTable:customData>
+			</smartTable:SmartTable>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
